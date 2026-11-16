@@ -6,10 +6,10 @@
 
 ## 1. System purpose
 
-- **Problem and real-world context:** TODO
-- **Intended user:** TODO
-- **What physical condition should your system monitor?** TODO
-- **How will the system's response help the user?** TODO
+- **Problem and real-world context:** Greenhouses could get too hot or dry without you noticing. Greenhouse users need a way to alert them if their greenhouse gets to hot or dry.
+- **Intended user:** Greenhouse users and other plant owners/users
+- **What physical condition should your system monitor?** Temperature and moisture level of the greenhouse
+- **How will the system's response help the user?** It will do an annoying beeping sound if the greenhouse temperature gets too hot or it gets too dry
 
 ## 2. System design
 
@@ -18,7 +18,7 @@
 > Replace the TODOs with your own system details. Show what each sensor measures, how the Arduino uses the readings to choose a state, and how the LCD and additional output respond.
 
 ```text
-Inputs (TODO) → Processing (TODO) → Outputs (TODO)
+Inputs (Temp and humidity) → Processing (checks if temp too high or moisture too low) → Outputs (Outputs a annoying beeping sound if there is a problem)
 ```
 
 ### Inputs and outputs
@@ -27,9 +27,9 @@ Inputs (TODO) → Processing (TODO) → Outputs (TODO)
 
 | Device | Input or output | Arduino pin(s) | Analog or digital?  |
 | --- | --- | --- | --- |
-| TODO | Sensor input | TODO | TODO |
-| LCD | Output | TODO | TODO |
-| TODO | Additional output | TODO | TODO |
+| DHT 11 | Sensor input | 2 | digital |
+| LCD | Output | 6,7,8,9,10,11,12 | digital |
+| Active buzzer | Additional output | 5 | digital |
 
 ### Decision table
 
@@ -37,8 +37,8 @@ Inputs (TODO) → Processing (TODO) → Outputs (TODO)
 
 | Sensor reading or condition | System state | LCD display | Additional output |
 | --- | --- | --- | --- |
-| TODO | TODO | TODO | TODO |
-| TODO | TODO | TODO | TODO |
+| Normal temp and humidity | Normal | humidity = >10% and temp = <80f | NA |
+| humidity less than 10% or temp more than 80f| Uh-Oh bad | humidity = <10% or temp = >80f | Beeping noise |
 
 ### Libraries
 
@@ -46,7 +46,7 @@ Inputs (TODO) → Processing (TODO) → Outputs (TODO)
 
 | Library | What it does in your program |
 | --- | --- |
-| TODO | TODO |
+| Liquid crystal | code for the LCD display screen |
 
 ## 3. Circuit design
 
@@ -60,17 +60,17 @@ Inputs (TODO) → Processing (TODO) → Outputs (TODO)
 
 | Test | Condition or sensor reading | Expected response | Actual response |
 | --- | --- | --- | --- |
-| Normal operation | TODO | TODO | TODO |
-| Condition that triggers a response | TODO | TODO | TODO |
-| Condition that triggers a response | TODO | TODO | TODO |
+| Normal operation | temp<75 and humidity >20 | stays silent | stays silent |
+| Condition that triggers a response | temp >75 or humidity <20 | Beeps short | beeps short |
+| Condition that triggers a response | temp >80 or humidity <15 | Beeps long | beeps long |
 
 **Revisions made to the system based on testing**
 
 > Describe any changes you made based on your test results and test the affected behavior again. If you made no changes, explain why.
 
-**Revision and reason:** TODO
+**Revision and reason:** Added a second mode for if its way too hot or way too dry
 
-**Result after testing the revision:** TODO
+**Result after testing the revision:** Theres now 3 modes total
 
 ## 5. Video Demonstration
 
