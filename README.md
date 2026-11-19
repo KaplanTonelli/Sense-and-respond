@@ -76,4 +76,4 @@ Inputs (Temp and humidity) → Processing (checks if temp too high or moisture t
 
 > Replace the placeholder below with a link to your video. Introduce the real-world problem, show the sensor detecting a change in physical conditions, and demonstrate how the system responds under different conditions. Use on-screen text or voice-over to explain how it works. 
 
-[Video demonstration](https://youtube.com/](https://drive.google.com/file/d/1IQDV6AIMkV_9wPjN70mqGMlDXdWlWy1q/edit)
+[Video demonstration](https://youtu.be/E91wwh8d3MU)
